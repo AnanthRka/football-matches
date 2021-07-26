@@ -45,7 +45,7 @@ if '__main__':
 
     # initializing the browser
     option = webdriver.ChromeOptions()
-    # option.add_argument('--headless')
+    option.add_argument('--headless')
     option.add_argument("--log-level=3")
     option.add_experimental_option('excludeSwitches', ['enable-logging'])
 
