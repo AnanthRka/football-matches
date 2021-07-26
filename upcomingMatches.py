@@ -8,6 +8,7 @@ class UpcomingMatches:
     def __init__(self,browser):
         self.teams(browser)
 
+    # available teams to scrape data
     def teams(self,br):
 
         try:
@@ -36,6 +37,7 @@ class UpcomingMatches:
 
             br.get('https://www.goal.com/en-in/teams')
 
+    # scaping data
     def get_matches(self,br,chosen_team):
 
         try:
@@ -82,7 +84,8 @@ class UpcomingMatches:
         else:
             self.allPlayedMatches(list_of_all_matches,competitions,chosen_team)
 
-    def upcomingAndPlayedMatches(self,matches, competitions, chosen_team, penalties,penalties_result):
+    # mix of fixtures and results
+    def upcomingAndPlayedMatches(self,matches, competitions, chosen_team, penalties,pen_result):
         for i in range(len(matches)):
                 matches[i].remove('-')
                 matches[i].insert(0,competitions[i])
@@ -95,9 +98,9 @@ class UpcomingMatches:
                             matches[i][4]=f'{matches[i][2]} - {matches[i][4]}'
                             matches[i].remove(matches[i][2])
                         else:
-                            matches[i][4]= f'{matches[i][2]} - {matches[i][4]}' +  penalties_result[i]
-                            if len(penalties_result[i])>1:
-                                if int(penalties_result[i][len(penalties_result[i])-6]) < int(penalties_result[i][len(penalties_result[i])-2]):
+                            matches[i][4]= f'{matches[i][2]} - {matches[i][4]}' +  pen_result[i]
+                            if len(pen_result[i])>1:
+                                if int(pen_result[i][len(pen_result[i])-6]) < int(pen_result[i][len(pen_result[i])-2]):
                                     if matches[i][3] == chosen_team:
                                         matches[i][1] ='Lost'
                                     else:
@@ -130,7 +133,7 @@ class UpcomingMatches:
         print(tabulate(matches,headers=['Competition','Status/Date','Home Team','Score','Away Team'],tablefmt='pretty'))
         print()
 
-
+    # last 10 played matches
     def allPlayedMatches(self,matches,competitions,chosen_team):
         
         for i in range(len(matches)):
@@ -165,6 +168,7 @@ class UpcomingMatches:
         print(tabulate(matches,headers=['Competition','Status','Home Team','Score','Away Team'],tablefmt='pretty'))
         print()
 
+    # clears terminal for better display
     def clear_screen(self):
         # for windows
         if name == 'nt':

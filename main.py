@@ -32,6 +32,7 @@ def menu(main_browser):
             main_browser.quit()
             sys.exit()
 
+# clears terminal for better display
 def clear_screen():
     # for windows
     if name == 'nt':

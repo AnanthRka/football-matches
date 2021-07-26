@@ -16,7 +16,10 @@ class FindUrl:
         self.findUrl(self.enter)
 
     def findUrl(self,enter = ''):
-        enter = input("Press ENTER for today's schedule\n\t\t(OR)\nEnter the date on which you want the schedule in yyyy-mm-dd format: ")
+        enter = input("Press ENTER for today's schedule\n\t\t(OR)\n\
+            Enter the date on which you want the schedule in yyyy-mm-dd format: ")
+        
+        # Date format conversion
         if enter != '' and len(enter)==10:
             list_entered_date = enter.split('-')
 

@@ -12,6 +12,7 @@ class LeagueTable:
     def __init__(self, browser):
         self.get_competitions(browser)
 
+    # prints table after modifying it
     def get_table(self, rows, headers, heading, league):
         for i in rows:
             if len(i) >1 :
@@ -38,8 +39,8 @@ class LeagueTable:
             else:
                 temp.append(i)
 
+    # scraping for data
     def get_competitions(self, browser):
-
         try:
             browser.set_page_load_timeout(8)
             browser.get('https://www.goal.com/en-in/tables')
